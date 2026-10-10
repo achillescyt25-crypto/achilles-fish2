@@ -58,24 +58,27 @@ h2{text-align:center;margin:5px 0;color:var(--primary);font-size:20px;text-shado
 <script>
 /* ====== 你的 18 張圖，對應 images/ 裡的檔名（不用加 .png） ====== */
 const bioList = [
-  { name:'生物1',  folder:'3e8bc30-0075-4031-9587-45e7c4e76201' },
-  { name:'生物2',  folder:'05e96568-5877-4d15-a01b-7e903411fe87' },
-  { name:'生物3',  folder:'6ab4dd03-9322-40ca-bb11-ffa3952908d4' },
-  { name:'生物4',  folder:'8a7498b6-cf5a-4bdc-9ab0-8ee466471881' },
-  { name:'生物5',  folder:'52edca65-fca1-41db-8e43-164e8bb6a456' },
-  { name:'生物6',  folder:'53d0430e-5907-4223-b52e-c574e00809ae' },
-  { name:'生物7',  folder:'69b44d8b-5b04-422b-9dd6-78f45cfb6a95' },
-  { name:'生物8',  folder:'01451e63-6f39-49a6-a4df-21aa565df275' },
-  { name:'生物9',  folder:'561b2eee-c51f-452b-bd98-78e3e1865872' },
-  { name:'生物10', folder:'6399b98f-d4c5-46d4-b660-3ff53f214ae8' },
-  { name:'生物11', folder:'27364f40-92ce-404f-be58-04d7b5377ae5' },
-  { name:'生物12', folder:'2790235b-2a7f-4b90-a336-08d5fbdcaeca' },
-  { name:'生物13', folder:'03740734-4f0e-40a0-a8f8-3ac1620f7867' },
-  { name:'生物14', folder:'a0b63aa2-e3cc-4cbf-885d-b2380689a050' },
-  { name:'生物15', folder:'af1e226f-2a6b-4a96-8d6b-b29b0ce969f9' },
-  { name:'生物16', folder:'b17b40db-8bad-435f-bb3b-0fb04ae3ef46' },
-  { name:'生物17', folder:'e62e341e-2876-4fb5-836c-5c2db087f09a' },
-  { name:'生物18', folder:'e9966c42-1d78-4b37-aa19-33bc3f0e66d4' }
+  { name:'生物1',  folder:'01451e63-6f39-49a6-a46f-21aa565df275' },
+  { name:'生物2',  folder:'03740734-4f0e-40a0-a8f8-3ac1620f7867' },
+  { name:'生物3',  folder:'05e96568-5877-4d15-a01b-7e903411fe87' },
+  { name:'生物4',  folder:'1251007e-3d6c-4b3b-b09e-cb624badb0b8' },
+  { name:'生物5',  folder:'27364f40-92ce-404f-be58-04d7b5377ae5' },
+  { name:'生物6',  folder:'2790235b-2a7f-4b90-a336-08d5fbdcaeca' },
+  { name:'生物7',  folder:'3e8bc30-0075-4031-9587-45e7c4e76201' },
+  { name:'生物8',  folder:'52edca66-fca1-41db-8e43-164e8bb6a456' },
+  { name:'生物9',  folder:'53d0430e-5907-4223-b52e-c574e00809ae' },
+  { name:'生物10', folder:'5612beee-c51f-452b-bd98-78e3e1865872' },
+  { name:'生物11', folder:'6399b98f-d4c5-46d4-b660-3ff53f214ae8' },
+  { name:'生物12', folder:'69b442f8-5b04-422b-9dd6-78f45cfb6a95' },
+  { name:'生物13', folder:'6ab4dd03-9322-40ca-bb11-ffa3952908d4' },
+  { name:'生物14', folder:'7eaa45fd-8f4d-4bd6-a366-0d1f8f5330c0' },
+  { name:'生物15', folder:'8a7498b6-cf5a-4bcd-9ab0-8ee466471881' },
+  { name:'生物16', folder:'a0b634a2-e3cc-4cbf-885d-b2380689a050' },
+  { name:'生物17', folder:'af1e226f-2a6b-4a9e-84d6-b29b0ce969f9' },
+  { name:'生物18', folder:'b17b404b-8bad-435f-bb3b-0fb04ae3ef46' },
+  { name:'生物19', folder:'e62e341e-2876-4fb5-836c-5c2db087f09a' },
+  { name:'生物20', folder:'e9966c42-1d78-4b37-aa19-33bc3f0e66d4' },
+  { name:'生物21', folder:'f570ba71-24f6-49be-a4f4-be79f04f9d05' }
 ];
 
 const config = { speed:1, geneMode:'single', fishCount:26, showId:true, showDays:true, maxDays:10 };
@@ -96,7 +99,7 @@ function buildAquarium(){
   document.getElementById('bottom-matrix-grid').innerHTML = '';
 
   let saved = {};
-  try{ saved = JSON.parse(localStorage.getItem('aq_v4')) || {}; }catch(e){}
+  try{ saved = JSON.parse(localStorage.getItem('aq_v5')) || {}; }catch(e){}
 
   for(let i=0;i<config.fishCount;i++){
     const id = i+1;
@@ -226,7 +229,7 @@ function saveProgress(){
   fishArray.forEach(f => {
     d[f.id] = { type:f.type, growthDays:f.growthDays, currentSize:f.currentSize, lastFedDate:f.lastFedDate, isDead:f.isDead };
   });
-  localStorage.setItem('aq_v4', JSON.stringify(d));
+  localStorage.setItem('aq_v5', JSON.stringify(d));
   const t = document.getElementById('save-toast');
   t.style.opacity = '1';
   setTimeout(() => t.style.opacity = '0', 800);
